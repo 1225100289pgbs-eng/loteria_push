@@ -24,8 +24,7 @@ class _PantallaCantorState extends State<PantallaCantor> {
       builder: (context, _) {
         final vm = widget.vm;
         return Scaffold(
-          appBar: AppBar(title: const Text('
- Cantor')),
+          appBar: AppBar(title: const Text('🎤 Cantor')),
           body: ListView(padding: const EdgeInsets.all(16), children: [
             if (vm.sala == null)
               FilledButton(onPressed: vm.crear, child: const Text('Crear sala'))

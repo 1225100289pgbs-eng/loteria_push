@@ -13,10 +13,10 @@ class PuertoFcm implements PuertoPush {
   PuertoFcm() : _fcm = FirebaseMessaging.instance;
   final FirebaseMessaging _fcm;
 
-  PermisoPush _mapear(AuthorizationStatus s) => switch (s) {
+    PermisoPush _mapear(AuthorizationStatus s) => switch (s) {
         AuthorizationStatus.authorized || AuthorizationStatus.provisional => PermisoPush.concedido,
-        AuthorizationStatus.denied => PermisoPush.denegado,
         AuthorizationStatus.notDetermined => PermisoPush.sinPreguntar,
+        _ => PermisoPush.denegado, // denied y deniedPermanently (versión nueva de Firebase)
       };
 
   MensajePush _aMensaje(RemoteMessage m) => MensajePush(

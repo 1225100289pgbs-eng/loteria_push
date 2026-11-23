@@ -20,7 +20,12 @@ void main() {
     vm = JuegoVm(c);
   });
 
-  Future<void> abrir(WidgetTester t) async {
+    Future<void> abrir(WidgetTester t) async {
+    // Pantalla de prueba alta para que la tabla, el mensaje y el botón quepan sin hacer scroll.
+    t.view.physicalSize = const Size(1080, 3000);
+    t.view.devicePixelRatio = 1.0;
+    addTearDown(t.view.reset);
+
     await t.runAsync(() => c.unirse(sala: 'ABCDE', nombre: 'Ana'));
     await t.pumpWidget(MaterialApp(home: PantallaJuego(vm: vm)));
   }
